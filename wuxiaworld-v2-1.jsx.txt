@@ -1,0 +1,1167 @@
+import { useState, useEffect, useRef, useCallback } from "react";
+
+// ── SVG COVER GENERATOR ──
+// Generates beautiful xianxia-styled cover art as inline SVG data URIs
+function makeCover(id) {
+  // Each cover: unique illustrated character + environment + fx
+  const covers = {
+    1: () => {
+      // Nine Star Hegemon - dark warrior with fire/lightning, dramatic
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+<defs>
+  <linearGradient id="c1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0200"/><stop offset="50%" stop-color="#2d0800"/><stop offset="100%" stop-color="#1a0500"/></linearGradient>
+  <radialGradient id="c1glow" cx="50%" cy="60%" r="50%"><stop offset="0%" stop-color="#ff4400" stop-opacity="0.6"/><stop offset="100%" stop-color="#ff4400" stop-opacity="0"/></radialGradient>
+  <filter id="c1blur"><feGaussianBlur stdDeviation="2.5"/></filter>
+  <filter id="c1gf"><feGaussianBlur stdDeviation="1.5"/></filter>
+</defs>
+<rect width="200" height="280" fill="url(#c1bg)"/>
+<!-- Sky / atmosphere -->
+<rect width="200" height="160" fill="url(#c1glow)"/>
+<!-- Stars -->
+<circle cx="20" cy="15" r="1" fill="#fff" opacity=".8"/><circle cx="45" cy="8" r=".8" fill="#fff" opacity=".6"/><circle cx="80" cy="20" r="1.2" fill="#fff" opacity=".9"/><circle cx="120" cy="10" r=".8" fill="#fff" opacity=".7"/><circle cx="160" cy="18" r="1" fill="#fff" opacity=".8"/><circle cx="185" cy="6" r=".7" fill="#fff" opacity=".5"/><circle cx="35" cy="30" r=".6" fill="#fff" opacity=".4"/>
+<!-- Nine stars glow -->
+<circle cx="100" cy="50" r="18" fill="none" stroke="#ffa040" stroke-width="1" opacity="0.3"/>
+<circle cx="100" cy="25" r="4" fill="#ffd700" opacity=".9" filter="url(#c1gf)"/>
+<circle cx="122" cy="33" r="3.5" fill="#ffa040" opacity=".85" filter="url(#c1gf)"/>
+<circle cx="130" cy="56" r="3" fill="#ff8020" opacity=".8" filter="url(#c1gf)"/>
+<circle cx="118" cy="76" r="3.5" fill="#ff6000" opacity=".85" filter="url(#c1gf)"/>
+<circle cx="100" cy="82" r="4" fill="#ff4400" opacity=".9" filter="url(#c1gf)"/>
+<circle cx="82" cy="76" r="3.5" fill="#ff6000" opacity=".85" filter="url(#c1gf)"/>
+<circle cx="70" cy="56" r="3" fill="#ff8020" opacity=".8" filter="url(#c1gf)"/>
+<circle cx="78" cy="33" r="3.5" fill="#ffa040" opacity=".85" filter="url(#c1gf)"/>
+<circle cx="100" cy="25" r="1.5" fill="#fff" opacity="1"/>
+<!-- Ground fire glow -->
+<ellipse cx="100" cy="220" rx="70" ry="20" fill="#ff4400" opacity="0.3" filter="url(#c1blur)"/>
+<!-- Character silhouette - warrior standing -->
+<g transform="translate(100,210)">
+  <!-- legs -->
+  <rect x="-12" y="-60" width="10" height="55" rx="3" fill="#1a0a00"/>
+  <rect x="2" y="-60" width="10" height="55" rx="3" fill="#1a0a00"/>
+  <!-- body/robe -->
+  <path d="M-22,-130 Q-25,-100 -28,-60 L28,-60 Q25,-100 22,-130 Z" fill="#111"/>
+  <path d="M-22,-130 Q-10,-120 0,-125 Q10,-120 22,-130 L18,-60 L-18,-60 Z" fill="#222"/>
+  <!-- belt -->
+  <rect x="-22" y="-72" width="44" height="8" rx="2" fill="#ff6600" opacity=".8"/>
+  <!-- chest detail -->
+  <path d="M-8,-120 L0,-100 L8,-120" fill="none" stroke="#ff8800" stroke-width="1.5" opacity=".7"/>
+  <!-- arms -->
+  <path d="M-22,-130 Q-45,-120 -50,-90 Q-45,-85 -38,-88 Q-35,-110 -18,-118 Z" fill="#1a0a00"/>
+  <path d="M22,-130 Q45,-120 50,-90 Q45,-85 38,-88 Q35,-110 18,-118 Z" fill="#1a0a00"/>
+  <!-- hand with energy -->
+  <circle cx="-48" cy="-86" r="6" fill="#ff4400" opacity=".9" filter="url(#c1gf)"/>
+  <circle cx="48" cy="-86" r="6" fill="#ff8800" opacity=".9" filter="url(#c1gf)"/>
+  <!-- neck -->
+  <rect x="-7" y="-145" width="14" height="18" rx="4" fill="#c8956c"/>
+  <!-- head -->
+  <ellipse cx="0" cy="-160" rx="18" ry="20" fill="#c8956c"/>
+  <!-- hair - flowing up dramatically -->
+  <path d="M-18,-155 Q-30,-145 -25,-125 Q-20,-115 -15,-118 Q-18,-130 -16,-148 Z" fill="#111"/>
+  <path d="M18,-155 Q30,-145 25,-125 Q20,-115 15,-118 Q18,-130 16,-148 Z" fill="#111"/>
+  <path d="M-10,-178 Q0,-190 10,-178 Q8,-168 0,-170 Q-8,-168 -10,-178 Z" fill="#111"/>
+  <path d="M-5,-182 Q0,-195 5,-182" fill="none" stroke="#111" stroke-width="4"/>
+  <!-- eyes glow -->
+  <ellipse cx="-7" cy="-162" rx="4" ry="3" fill="#ff4400" opacity=".9"/>
+  <ellipse cx="7" cy="-162" rx="4" ry="3" fill="#ff4400" opacity=".9"/>
+  <circle cx="-7" cy="-162" r="1.5" fill="#fff"/>
+  <circle cx="7" cy="-162" r="1.5" fill="#fff"/>
+  <!-- Sword -->
+  <rect x="-3" y="-80" width="6" height="80" rx="1" fill="#888" transform="rotate(-15)"/>
+  <rect x="-10" y="-82" width="20" height="5" rx="1" fill="#aaa" transform="rotate(-15)"/>
+  <rect x="-2" y="-160" width="4" height="80" rx="1" fill="url(#c1bg)" opacity=".3" transform="rotate(-15)" filter="url(#c1gf)"/>
+</g>
+<!-- Fire particles -->
+<circle cx="60" cy="170" r="3" fill="#ff6600" opacity=".7" filter="url(#c1gf)"/>
+<circle cx="75" cy="155" r="2" fill="#ff8800" opacity=".6" filter="url(#c1gf)"/>
+<circle cx="140" cy="165" r="3" fill="#ff4400" opacity=".7" filter="url(#c1gf)"/>
+<circle cx="128" cy="150" r="2" fill="#ff6600" opacity=".5" filter="url(#c1gf)"/>
+<!-- Title bar -->
+<rect x="0" y="230" width="200" height="50" fill="#0a0200" opacity=".92"/>
+<rect x="0" y="230" width="200" height="2" fill="#ff6600" opacity=".8"/>
+<text x="100" y="252" text-anchor="middle" font-family="serif" font-size="11" font-weight="bold" fill="#ff8800" letter-spacing="1">NINE STAR HEGEMON</text>
+<text x="100" y="268" text-anchor="middle" font-family="serif" font-size="9" fill="#ff6600" opacity=".9">BODY ART · 九星霸体诀</text>
+<!-- Status badge -->
+<rect x="4" y="4" width="76" height="16" rx="3" fill="#1a6b2a" opacity=".9"/>
+<text x="42" y="15.5" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#4ade80">連載中</text>
+</svg>`;
+    },
+    2: () => {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+<defs>
+  <linearGradient id="c2bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#04060f"/><stop offset="60%" stop-color="#0d1128"/><stop offset="100%" stop-color="#1a1a3d"/></linearGradient>
+  <radialGradient id="c2glow" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#4466ff" stop-opacity="0.5"/><stop offset="100%" stop-color="#4466ff" stop-opacity="0"/></radialGradient>
+  <filter id="c2f"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+<rect width="200" height="280" fill="url(#c2bg)"/>
+<rect width="200" height="280" fill="url(#c2glow)"/>
+<!-- Many floating races / silhouettes -->
+<ellipse cx="100" cy="130" rx="65" ry="65" fill="none" stroke="#4466ff" stroke-width="0.5" opacity="0.3"/>
+<ellipse cx="100" cy="130" rx="45" ry="45" fill="none" stroke="#6688ff" stroke-width="0.5" opacity="0.4"/>
+<!-- Book with energy -->
+<g transform="translate(100,145)">
+  <rect x="-35" y="-45" width="32" height="45" rx="2" fill="#1a2040" stroke="#4466ff" stroke-width="1"/>
+  <rect x="-3" y="-45" width="38" height="45" rx="2" fill="#1e2550" stroke="#4466ff" stroke-width="1"/>
+  <!-- Book pages -->
+  <line x1="-3" y1="-40" x2="-3" y2="0" stroke="#6688ff" stroke-width="2"/>
+  <!-- Glowing text lines -->
+  <rect x="-30" y="-38" width="24" height="2" rx="1" fill="#4466ff" opacity=".6"/>
+  <rect x="-30" y="-32" width="20" height="2" rx="1" fill="#4466ff" opacity=".5"/>
+  <rect x="-30" y="-26" width="22" height="2" rx="1" fill="#4466ff" opacity=".6"/>
+  <rect x="2" y="-38" width="28" height="2" rx="1" fill="#8899ff" opacity=".7"/>
+  <rect x="2" y="-32" width="24" height="2" rx="1" fill="#8899ff" opacity=".6"/>
+  <rect x="2" y="-26" width="26" height="2" rx="1" fill="#8899ff" opacity=".7"/>
+  <!-- Energy burst from book -->
+  <circle cx="0" cy="-22" r="15" fill="#4466ff" opacity="0.15" filter="url(#c2f)"/>
+  <circle cx="0" cy="-22" r="8" fill="#6688ff" opacity="0.2" filter="url(#c2f)"/>
+</g>
+<!-- Character reading - scholar type -->
+<g transform="translate(100,160)">
+  <rect x="-6" y="-85" width="12" height="30" rx="3" fill="#c8956c"/>
+  <ellipse cx="0" cy="-100" rx="16" ry="18" fill="#c8956c"/>
+  <!-- Scholar robe - white/silver -->
+  <path d="M-20,-85 Q-22,-55 -25,-20 L25,-20 Q22,-55 20,-85 Z" fill="#e8e8f0"/>
+  <path d="M-20,-85 Q-40,-75 -42,-50 L-28,-48 Q-26,-65 -18,-75 Z" fill="#d0d0e0"/>
+  <path d="M20,-85 Q40,-75 42,-50 L28,-48 Q26,-65 18,-75 Z" fill="#d0d0e0"/>
+  <!-- Hair - scholarly ponytail -->
+  <path d="M-14,-112 Q-20,-105 -18,-95 L-12,-96 Q-10,-102 -10,-110 Z" fill="#111"/>
+  <path d="M14,-112 Q20,-105 18,-95 L12,-96 Q10,-102 10,-110 Z" fill="#111"/>
+  <path d="M-8,-118 Q0,-128 8,-118 Q6,-110 0,-112 Q-6,-110 -8,-118Z" fill="#111"/>
+  <rect x="-2" y="-128" width="4" height="20" rx="2" fill="#111"/>
+  <circle cx="0" cy="-128" r="3" fill="#4466ff" opacity=".8"/>
+  <!-- Eyes -->
+  <ellipse cx="-6" cy="-102" rx="3" ry="2" fill="#4466ff"/>
+  <ellipse cx="6" cy="-102" rx="3" ry="2" fill="#4466ff"/>
+  <!-- Multiple race auras -->
+  <circle cx="-50" cy="-60" r="10" fill="#ff4444" opacity=".3" filter="url(#c2f)"/>
+  <circle cx="50" cy="-60" r="10" fill="#44ff88" opacity=".3" filter="url(#c2f)"/>
+  <circle cx="-45" cy="-30" r="8" fill="#ffaa00" opacity=".3" filter="url(#c2f)"/>
+  <circle cx="45" cy="-30" r="8" fill="#aa44ff" opacity=".3" filter="url(#c2f)"/>
+</g>
+<!-- Stars / particles -->
+<circle cx="30" cy="40" r="1.5" fill="#8899ff" opacity=".8"/><circle cx="170" cy="30" r="1" fill="#aabbff" opacity=".7"/><circle cx="15" cy="80" r="1" fill="#6677ff" opacity=".6"/><circle cx="185" cy="90" r="1.5" fill="#8899ff" opacity=".8"/>
+<rect x="0" y="230" width="200" height="50" fill="#04060f" opacity=".95"/>
+<rect x="0" y="230" width="200" height="2" fill="#4466ff" opacity=".8"/>
+<text x="100" y="250" text-anchor="middle" font-family="serif" font-size="10.5" font-weight="bold" fill="#8899ff" letter-spacing="1">TRIBULATION OF</text>
+<text x="100" y="265" text-anchor="middle" font-family="serif" font-size="10.5" font-weight="bold" fill="#6688ff">MYRIAD RACES</text>
+<rect x="4" y="4" width="76" height="16" rx="3" fill="#1a6b2a" opacity=".9"/>
+<text x="42" y="15.5" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#4ade80">連載中</text>
+</svg>`;
+    },
+    3: () => {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+<defs>
+  <linearGradient id="c3bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#050200"/><stop offset="50%" stop-color="#1e0c00"/><stop offset="100%" stop-color="#3d1800"/></linearGradient>
+  <radialGradient id="c3glow" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="#ffd700" stop-opacity="0.5"/><stop offset="100%" stop-color="#ffd700" stop-opacity="0"/></radialGradient>
+  <filter id="c3f"><feGaussianBlur stdDeviation="2"/></filter>
+  <filter id="c3f2"><feGaussianBlur stdDeviation="1"/></filter>
+</defs>
+<rect width="200" height="280" fill="url(#c3bg)"/>
+<rect width="200" height="280" fill="url(#c3glow)"/>
+<!-- Golden throne rays -->
+<g transform="translate(100,100)" opacity="0.25">
+  <line x1="0" y1="0" x2="0" y2="-100" stroke="#ffd700" stroke-width="1"/><line x1="0" y1="0" x2="70" y2="-70" stroke="#ffd700" stroke-width="1"/><line x1="0" y1="0" x2="100" y2="0" stroke="#ffd700" stroke-width="1"/><line x1="0" y1="0" x2="70" y2="70" stroke="#ffd700" stroke-width="1"/><line x1="0" y1="0" x2="-70" y2="-70" stroke="#ffd700" stroke-width="1"/><line x1="0" y1="0" x2="-100" y2="0" stroke="#ffd700" stroke-width="1"/><line x1="0" y1="0" x2="-70" y2="70" stroke="#ffd700" stroke-width="1"/><line x1="0" y1="0" x2="0" y2="100" stroke="#ffd700" stroke-width="1"/>
+</g>
+<!-- Emperor on throne - imposing figure -->
+<g transform="translate(100,200)">
+  <!-- Throne base -->
+  <path d="M-50,10 L50,10 L40,-10 L-40,-10 Z" fill="#2a1a00"/>
+  <rect x="-50" y="-15" width="100" height="8" rx="2" fill="#3d2800" stroke="#ffd700" stroke-width=".5"/>
+  <!-- Throne back -->
+  <path d="M-35,-15 L-40,-80 L40,-80 L35,-15 Z" fill="#2a1a00" stroke="#ffd700" stroke-width=".8"/>
+  <!-- Throne ornament -->
+  <path d="M-5,-78 L0,-95 L5,-78" fill="#ffd700" opacity=".8"/>
+  <circle cx="0" cy="-97" r="4" fill="#ffd700"/>
+  <!-- Legs -->
+  <rect x="-18" y="-60" width="12" height="40" rx="3" fill="#1a0a00"/>
+  <rect x="6" y="-60" width="12" height="40" rx="3" fill="#1a0a00"/>
+  <!-- Body - emperor robe, elaborate -->
+  <path d="M-28,-135 Q-30,-95 -32,-60 L32,-60 Q30,-95 28,-135 Z" fill="#1a0800"/>
+  <path d="M-22,-135 Q-10,-125 0,-128 Q10,-125 22,-135 L18,-60 L-18,-60 Z" fill="#2d1400"/>
+  <!-- Golden robe trim -->
+  <path d="M-28,-135 L-22,-135" stroke="#ffd700" stroke-width="1.5"/><path d="M22,-135 L28,-135" stroke="#ffd700" stroke-width="1.5"/>
+  <rect x="-18" y="-75" width="36" height="4" rx="1" fill="#ffd700" opacity=".7"/>
+  <path d="M-18,-60 L18,-60" stroke="#ffd700" stroke-width="1.5" opacity=".6"/>
+  <!-- Dragon emblem on chest -->
+  <path d="M-8,-110 Q0,-118 8,-110 Q5,-102 0,-104 Q-5,-102 -8,-110Z" fill="#ffd700" opacity=".8"/>
+  <!-- Arms - one raised commandingly -->
+  <path d="M28,-135 Q50,-125 55,-100 Q50,-94 44,-96 Q42,-115 22,-125 Z" fill="#1a0800"/>
+  <path d="M-28,-135 Q-45,-128 -48,-110 Q-44,-104 -38,-107 Q-38,-120 -22,-128 Z" fill="#1a0800"/>
+  <!-- Raised hand with power -->
+  <circle cx="54" cy="-96" r="7" fill="#ffd700" opacity=".9" filter="url(#c3f2)"/>
+  <circle cx="54" cy="-96" r="12" fill="#ffa000" opacity=".3" filter="url(#c3f)"/>
+  <!-- Neck -->
+  <rect x="-6" y="-148" width="12" height="16" rx="3" fill="#b07840"/>
+  <!-- Head -->
+  <ellipse cx="0" cy="-163" rx="17" ry="19" fill="#b07840"/>
+  <!-- Crown -->
+  <rect x="-18" y="-182" width="36" height="10" rx="1" fill="#ffd700"/>
+  <path d="M-18,-182 L-12,-196 L-6,-182" fill="#ffd700"/><path d="M-3,-182 L0,-198 L3,-182" fill="#ffd700"/><path d="M6,-182 L12,-196 L18,-182" fill="#ffd700"/>
+  <circle cx="-12" cy="-196" r="2" fill="#ff4444"/><circle cx="0" cy="-198" r="2.5" fill="#ff4444"/><circle cx="12" cy="-196" r="2" fill="#ff4444"/>
+  <!-- Eyes - piercing golden -->
+  <ellipse cx="-6" cy="-165" rx="4" ry="3" fill="#ffd700"/>
+  <ellipse cx="6" cy="-165" rx="4" ry="3" fill="#ffd700"/>
+  <circle cx="-6" cy="-165" r="1.5" fill="#111"/>
+  <circle cx="6" cy="-165" r="1.5" fill="#111"/>
+  <!-- Hair -->
+  <path d="M-17,-170 Q-22,-162 -20,-152 L-14,-153 Q-14,-163 -14,-172 Z" fill="#111"/>
+  <path d="M17,-170 Q22,-162 20,-152 L14,-153 Q14,-163 14,-172 Z" fill="#111"/>
+</g>
+<!-- Golden particles -->
+<circle cx="40" cy="100" r="2" fill="#ffd700" opacity=".6" filter="url(#c3f2)"/>
+<circle cx="160" cy="120" r="2.5" fill="#ffa000" opacity=".7" filter="url(#c3f2)"/>
+<circle cx="25" cy="160" r="1.5" fill="#ffd700" opacity=".5"/>
+<circle cx="175" cy="155" r="1.5" fill="#ffd700" opacity=".5"/>
+<rect x="0" y="230" width="200" height="50" fill="#050200" opacity=".95"/>
+<rect x="0" y="230" width="200" height="2" fill="#ffd700" opacity=".8"/>
+<text x="100" y="251" text-anchor="middle" font-family="serif" font-size="11" font-weight="bold" fill="#ffd700" letter-spacing="2">EMPEROR'S</text>
+<text x="100" y="268" text-anchor="middle" font-family="serif" font-size="11" font-weight="bold" fill="#ffa000">DOMINATION</text>
+<rect x="4" y="4" width="58" height="16" rx="3" fill="#1a3d6b" opacity=".9"/>
+<text x="33" y="15.5" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#60a5fa">完結</text>
+</svg>`;
+    },
+  };
+
+  const defaultCovers = [4,5,6,7,8,9,10,11,12];
+  const colorSchemes = {
+    4: {bg:"#08050f",bg2:"#150a28",acc:"#9933ff",acc2:"#cc66ff",ch:"💀",t:"LICH FOR HIRE",s:"亡灵雇佣",status:"連載中",statusColor:"#4ade80",statusBg:"#1a6b2a"},
+    5: {bg:"#0a0014",bg2:"#200030",acc:"#dd00ff",acc2:"#ee88ff",ch:"⚡",t:"TALES OF DEMONS",s:"天蚕土豆 · 妖神记",status:"連載中",statusColor:"#4ade80",statusBg:"#1a6b2a"},
+    6: {bg:"#020f04",bg2:"#0a2810",acc:"#00ee44",acc2:"#66ff99",ch:"🗡",t:"MARTIAL WORLD",s:"武炼巅峰",status:"完結",statusColor:"#60a5fa",statusBg:"#1a3d6b"},
+    7: {bg:"#020610",bg2:"#061428",acc:"#0066ff",acc2:"#44aaff",ch:"❄",t:"AGAINST THE GODS",s:"逆天邪神",status:"連載中",statusColor:"#4ade80",statusBg:"#1a6b2a"},
+    8: {bg:"#020408",bg2:"#060e20",acc:"#1155ff",acc2:"#5588ff",ch:"🐉",t:"COILING DRAGON",s:"盘龙",status:"完結",statusColor:"#60a5fa",statusBg:"#1a3d6b"},
+    9: {bg:"#100202",bg2:"#280606",acc:"#ff2200",acc2:"#ff6644",ch:"🔥",t:"BATTLE THROUGH",s:"HEAVENS · 斗破苍穹",status:"完結",statusColor:"#60a5fa",statusBg:"#1a3d6b"},
+    10:{bg:"#0f0308",bg2:"#280810",acc:"#cc1155",acc2:"#ff4488",ch:"💎",t:"DOULUO DALU",s:"斗罗大陆",status:"完結",statusColor:"#60a5fa",statusBg:"#1a3d6b"},
+    11:{bg:"#0c0c00",bg2:"#1e1e00",acc:"#ccaa00",acc2:"#ffdd44",ch:"☀",t:"TRUE MARTIAL WORLD",s:"真武世界",status:"完結",statusColor:"#60a5fa",statusBg:"#1a3d6b"},
+    12:{bg:"#030a03",bg2:"#0a200a",acc:"#008844",acc2:"#44cc88",ch:"🌿",t:"THE GREAT RULER",s:"大主宰",status:"完結",statusColor:"#60a5fa",statusBg:"#1a3d6b"},
+  };
+
+  if (covers[id]) {
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(covers[id]());
+  }
+
+  // Generic beautiful cover for IDs 4-12
+  const c = colorSchemes[id] || colorSchemes[4];
+  const numParticles = 20;
+  let particles = '';
+  for(let i=0;i<numParticles;i++){
+    const x=10+(i*137)%180, y=20+(i*97)%200, r=0.8+(i%4)*0.6, op=0.3+(i%5)*0.12;
+    particles += `<circle cx="${x}" cy="${y}" r="${r}" fill="${c.acc}" opacity="${op}"/>`;
+  }
+  let rays = '';
+  for(let i=0;i<12;i++){
+    const a=(i/12)*Math.PI*2, x2=100+Math.cos(a)*110, y2=115+Math.sin(a)*100;
+    rays += `<line x1="100" y1="115" x2="${x2}" y2="${y2}" stroke="${c.acc}" stroke-width="0.5" opacity="0.15"/>`;
+  }
+  // Build a character silhouette
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+<defs>
+  <linearGradient id="gbg${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${c.bg}"/><stop offset="100%" stop-color="${c.bg2}"/></linearGradient>
+  <radialGradient id="gglow${id}" cx="50%" cy="45%" r="55%"><stop offset="0%" stop-color="${c.acc}" stop-opacity="0.45"/><stop offset="100%" stop-color="${c.acc}" stop-opacity="0"/></radialGradient>
+  <filter id="gf${id}"><feGaussianBlur stdDeviation="2"/></filter>
+  <filter id="gf2${id}"><feGaussianBlur stdDeviation="1"/></filter>
+</defs>
+<rect width="200" height="280" fill="url(#gbg${id})"/>
+<rect width="200" height="280" fill="url(#gglow${id})"/>
+${rays}
+<!-- Aura circles -->
+<circle cx="100" cy="115" r="70" fill="none" stroke="${c.acc}" stroke-width="0.8" opacity="0.25"/>
+<circle cx="100" cy="115" r="50" fill="none" stroke="${c.acc2}" stroke-width="0.6" opacity="0.3"/>
+<circle cx="100" cy="115" r="30" fill="${c.acc}" opacity="0.12" filter="url(#gf${id})"/>
+${particles}
+<!-- Character silhouette -->
+<g transform="translate(100,195)">
+  <rect x="-12" y="-55" width="11" height="50" rx="3" fill="${c.bg2}"/>
+  <rect x="1" y="-55" width="11" height="50" rx="3" fill="${c.bg2}"/>
+  <path d="M-24,-125 Q-26,-90 -28,-55 L28,-55 Q26,-90 24,-125 Z" fill="${c.bg}" stroke="${c.acc}" stroke-width="0.5" stroke-opacity="0.5"/>
+  <path d="M-24,-125 Q-44,-115 -46,-85 L-30,-83 Q-28,-105 -20,-118 Z" fill="${c.bg2}"/>
+  <path d="M24,-125 Q44,-115 46,-85 L30,-83 Q28,-105 20,-118 Z" fill="${c.bg2}"/>
+  <circle cx="-44" cy="-82" r="7" fill="${c.acc}" opacity="0.9" filter="url(#gf2${id})"/>
+  <circle cx="44" cy="-82" r="7" fill="${c.acc2}" opacity="0.9" filter="url(#gf2${id})"/>
+  <rect x="-6" y="-140" width="12" height="17" rx="4" fill="#b07848"/>
+  <ellipse cx="0" cy="-155" rx="17" ry="19" fill="#b07848"/>
+  <path d="M-16,-150 Q-24,-140 -22,-128 L-14,-130 Q-12,-140 -13,-152 Z" fill="#111"/>
+  <path d="M16,-150 Q24,-140 22,-128 L14,-130 Q12,-140 13,-152 Z" fill="#111"/>
+  <path d="M-6,-173 Q0,-183 6,-173 Q4,-164 0,-166 Q-4,-164 -6,-173Z" fill="#111"/>
+  <ellipse cx="-6" cy="-157" rx="4" ry="3" fill="${c.acc}" opacity="0.95"/>
+  <ellipse cx="6" cy="-157" rx="4" ry="3" fill="${c.acc}" opacity="0.95"/>
+  <circle cx="-6" cy="-157" r="1.5" fill="#fff" opacity="0.8"/>
+  <circle cx="6" cy="-157" r="1.5" fill="#fff" opacity="0.8"/>
+  <!-- Energy weapon -->
+  <rect x="-2" y="-185" width="4" height="130" rx="2" fill="${c.acc}" opacity="0.7" filter="url(#gf2${id})" transform="rotate(8)"/>
+  <rect x="-8" y="-80" width="16" height="4" rx="1" fill="${c.acc2}" opacity="0.8" transform="rotate(8)"/>
+</g>
+<rect x="0" y="230" width="200" height="50" fill="${c.bg}" opacity="0.95"/>
+<rect x="0" y="230" width="200" height="2" fill="${c.acc}" opacity="0.8"/>
+<text x="100" y="251" text-anchor="middle" font-family="serif" font-size="10" font-weight="bold" fill="${c.acc2}" letter-spacing="1">${c.t}</text>
+<text x="100" y="267" text-anchor="middle" font-family="serif" font-size="9" fill="${c.acc}" opacity="0.85">${c.s}</text>
+<rect x="4" y="4" width="${c.status==="完結"?48:76}" height="16" rx="3" fill="${c.statusBg}" opacity=".9"/>
+<text x="${c.status==="完結"?28:42}" y="15.5" text-anchor="middle" font-family="sans-serif" font-size="9" fill="${c.statusColor}">${c.status}</text>
+</svg>`;
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+
+const NOVELS = [
+  {
+    id:1, title:"Nine Star Hegemon Body Art", titleID:"九星覇体の術",
+    author:"Ordinary Magician", genre:"仙侠", status:"連載中", statusID:"連載中",
+    rating:70, chapters:4800, views:"12.4M", cover: makeCover(1),
+    bannerBg:"linear-gradient(135deg,#1a0a00,#3d1a00,#1a0800)",
+    desc:"霊力を失った青年が、古代の修行術を発見し、その運命を永遠に変える。",
+    tags:["アクション","修行","ハーレム"], badge:"HOT"
+  },
+  {
+    id:2, title:"Tribulation of Myriad Races", titleID:"万族の試練",
+    author:"Lazy Cat under the Tree", genre:"仙侠", status:"連載中", statusID:"連載中",
+    rating:80, chapters:3200, views:"8.9M", cover: makeCover(2),
+    bannerBg:"linear-gradient(135deg,#0a0a1a,#1a1a3d,#0a0a18)",
+    desc:"数百の種族が争う世界で、一人の平凡な人間が伝説へと成り上がる。",
+    tags:["ファンタジー","多種族","冒険"], badge:"TOP"
+  },
+  {
+    id:3, title:"Emperor's Domination", titleID:"皇帝の覇道",
+    author:"Yan Bi Xiao Sheng", genre:"仙侠", status:"完結", statusID:"完結",
+    rating:75, chapters:5400, views:"15.2M", cover: makeCover(3),
+    bannerBg:"linear-gradient(135deg,#1a0800,#3d1500,#1a0a00)",
+    desc:"数百万年を生きたリー・チーウェイが弱き少年として転生し、覇道の旅を始める。",
+    tags:["仙侠","転生","無双"], badge:null
+  },
+  {
+    id:4, title:"Lich For Hire", titleID:"リッチ・フォー・ハイヤー",
+    author:"Ciwei Mao Yuedu", genre:"ファンタジー", status:"連載中", statusID:"連載中",
+    rating:85, chapters:420, views:"2.1M", cover: makeCover(4),
+    bannerBg:"linear-gradient(135deg,#080a10,#1a1a2e,#08080f)",
+    desc:"狡猾なリッチが予想外の方法で権力への道を切り開く。",
+    tags:["ファンタジー","コメディ","アンデッド"], badge:"NEW"
+  },
+  {
+    id:5, title:"Tales of Demons & Gods", titleID:"妖神記",
+    author:"Mad Snail", genre:"仙侠", status:"連載中", statusID:"連載中",
+    rating:82, chapters:502, views:"22.1M", cover: makeCover(5),
+    bannerBg:"linear-gradient(135deg,#1a0d1a,#2e0a2e,#120812)",
+    desc:"ニエ・リーは前世の記憶と力を持ったまま若き日々に転生し、運命に立ち向かう。",
+    tags:["転生","アクション","仙侠"], badge:"CLASSIC"
+  },
+  {
+    id:6, title:"Martial World", titleID:"武煉の頂点",
+    author:"Cocooned Cow", genre:"武侠", status:"完結", statusID:"完結",
+    rating:78, chapters:2341, views:"18.3M", cover: makeCover(6),
+    bannerBg:"linear-gradient(135deg,#041a08,#0a3010,#041008)",
+    desc:"リン・ミンは謎の立方体の破片を発見し、武の無限の可能性を開花させる。",
+    tags:["アクション","武侠","冒険"], badge:null
+  },
+  {
+    id:7, title:"Against the Gods", titleID:"逆天邪神",
+    author:"Mars Gravity", genre:"仙侠", status:"連載中", statusID:"連載中",
+    rating:76, chapters:1903, views:"19.7M", cover: makeCover(7),
+    bannerBg:"linear-gradient(135deg,#080d1a,#10183d,#060a14)",
+    desc:"裏切られたユン・チェーが輪廻の鏡の力を持って復活し、復讐の旅に出る。",
+    tags:["ハーレム","アクション","復讐"], badge:null
+  },
+  {
+    id:8, title:"Coiling Dragon", titleID:"盤龍",
+    author:"I Eat Tomatoes", genre:"ファンタジー", status:"完結", statusID:"完結",
+    rating:90, chapters:806, views:"25.4M", cover: makeCover(8),
+    bannerBg:"linear-gradient(135deg,#040810,#0a1428,#040810)",
+    desc:"リンレー・バルークが聖なる龍の魂を宿した翡翠のペンダントを見つけ、運命が一変する。",
+    tags:["名作","ファンタジー","龍"], badge:"CLASSIC"
+  },
+  {
+    id:9, title:"Battle Through the Heavens", titleID:"闘破蒼穹",
+    author:"Heavenly Silkworm Potato", genre:"仙侠", status:"完結", statusID:"完結",
+    rating:74, chapters:1648, views:"16.8M", cover: makeCover(9),
+    bannerBg:"linear-gradient(135deg,#1a0404,#3d0808,#1a0404)",
+    desc:"シャオ・ヤンはすべての力を失うが、謎の魂の助けを借りて灰の中から蘇る。",
+    tags:["仙侠","Drama","アクション"], badge:null
+  },
+  {
+    id:10, title:"Douluo Dalu", titleID:"闘羅大陸",
+    author:"Tang Jia San Shao", genre:"アクション", status:"完結", statusID:"完結",
+    rating:79, chapters:396, views:"14.2M", cover: makeCover(10),
+    bannerBg:"linear-gradient(135deg,#100408,#280810,#100408)",
+    desc:"タン・サンが闘羅大陸に転生し、史上最高の魂師へと成長する。",
+    tags:["冒険","魂師","名作"], badge:null
+  },
+  {
+    id:11, title:"True Martial World", titleID:"真武世界",
+    author:"Cocooned Cow", genre:"仙侠", status:"完結", statusID:"完結",
+    rating:77, chapters:1669, views:"13.5M", cover: makeCover(11),
+    bannerBg:"linear-gradient(135deg,#0f0f00,#1e1e00,#0f0f00)",
+    desc:"イー・ユンが前世の力を武器に修行世界の頂点を目指す。",
+    tags:["仙侠","ハーレム","ファンタジー"], badge:null
+  },
+  {
+    id:12, title:"The Great Ruler", titleID:"大主宰",
+    author:"Heavenly Silkworm Potato", genre:"仙侠", status:"完結", statusID:"完結",
+    rating:76, chapters:1580, views:"11.9M", cover: makeCover(12),
+    bannerBg:"linear-gradient(135deg,#061006,#0c200c,#061006)",
+    desc:"ムー・チェンが数々の試練を乗り越え、無限の霊の世界の支配者を目指す。",
+    tags:["アクション","学院","仙侠"], badge:"PREMIUM"
+  },
+];
+
+const BANNER_SLIDES = [
+  { novel: NOVELS[0], bgImg: null },
+  { novel: NOVELS[7], bgImg: null },
+  { novel: NOVELS[2], bgImg: null },
+  { novel: NOVELS[4], bgImg: null },
+  { novel: NOVELS[6], bgImg: null },
+];
+
+// ── CSS ──
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#111;color:#f0f0f0;font-family:'Noto Sans JP',sans-serif;min-height:100vh;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#1a1a1a;}::-webkit-scrollbar-thumb{background:#444;border-radius:2px;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideLeft{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes slideRight{from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:200px 0}}
+.skeleton{background:linear-gradient(90deg,#222 25%,#2a2a2a 50%,#222 75%);background-size:400px 100%;animation:shimmer 1.4s ease infinite;}
+`;
+
+// ── COVER IMAGE with fallback ──
+function CoverImg({ src, alt, style, fallbackIcon, fallbackBg }) {
+  // SVG data URIs always work — show directly
+  const isSVG = src && src.startsWith("data:image/svg");
+  const [loaded, setLoaded] = useState(isSVG);
+  const [error, setError] = useState(false);
+
+  return (
+    <div style={{ position:"relative", ...style, background: fallbackBg||"#111", overflow:"hidden" }}>
+      {src && !error && (
+        <img
+          src={src}
+          alt={alt}
+          onLoad={()=>setLoaded(true)}
+          onError={()=>setError(true)}
+          style={{ width:"100%", height:"100%", objectFit:"cover", display:"block",
+            opacity: loaded ? 1 : 0, transition:"opacity .3s" }}
+        />
+      )}
+      {(!loaded && !error) && (
+        <div className="skeleton" style={{ position:"absolute", inset:0 }}/>
+      )}
+      {error && (
+        <div style={{ position:"absolute", inset:0, background:fallbackBg||"#222",
+          display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",
+          padding:8, textAlign:"center" }}>
+          <span style={{fontSize:32,marginBottom:6}}>{fallbackIcon||"📖"}</span>
+          <span style={{fontSize:9,color:"#888",fontFamily:"sans-serif",lineHeight:1.3}}>{alt}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── BANNER HERO SLIDER ──
+function HeroSlider({ onNovel }) {
+  const [idx, setIdx] = useState(0);
+  const [dir, setDir] = useState("left");
+  const timerRef = useRef();
+
+  const go = useCallback((nextIdx, direction="left") => {
+    setDir(direction);
+    setIdx(nextIdx);
+  }, []);
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      go((i) => (typeof i === "function" ? ((i(idx)+1) % BANNER_SLIDES.length) : (idx+1) % BANNER_SLIDES.length));
+      setIdx(i => (i+1) % BANNER_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timerRef.current);
+  }, [idx]);
+
+  const slide = BANNER_SLIDES[idx];
+  const novel = slide.novel;
+
+  return (
+    <div style={{ position:"relative", width:"100%", borderRadius:12, overflow:"hidden", marginBottom:24 }}>
+      {/* Background */}
+      <div key={idx} style={{ position:"relative", width:"100%", aspectRatio:"16/9", minHeight:200,
+        animation:`${dir==="left"?"slideLeft":"slideRight"} .4s ease` }}>
+        {/* Full background using novel cover as blurred bg */}
+        <img src={novel.cover} alt=""
+          style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover",
+            display:"block", filter:"blur(12px) brightness(0.5) saturate(1.4)", transform:"scale(1.1)" }}/>
+        <div style={{ position:"absolute", inset:0, background: novel.bannerBg, opacity:0.55 }}/>
+        {/* Cover art on right side - sharp */}
+        <div style={{ position:"absolute", right:16, top:"50%", transform:"translateY(-50%)",
+          width:"38%", maxWidth:160, aspectRatio:"2/3", borderRadius:8, overflow:"hidden",
+          boxShadow:"-8px 0 30px rgba(0,0,0,.8), 0 4px 20px rgba(0,0,0,.6)" }}>
+          <CoverImg src={novel.cover} alt={novel.title}
+            style={{ width:"100%", height:"100%" }}
+            fallbackBg={novel.bannerBg} fallbackIcon="🐉"
+          />
+        </div>
+        {/* Content */}
+        <div style={{ position:"absolute", inset:0, padding:"20px 20px 16px", display:"flex",
+          flexDirection:"column", justifyContent:"flex-end", maxWidth:"70%" }}>
+          <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
+            <span style={{ background:"rgba(255,255,255,.15)", backdropFilter:"blur(4px)",
+              border:"1px solid rgba(255,255,255,.2)", padding:"2px 8px", borderRadius:20,
+              fontSize:11, color:"#fff", fontWeight:500 }}>
+              👍 {novel.rating}%
+            </span>
+            <span style={{ background:"rgba(30,150,80,.3)", border:"1px solid rgba(30,150,80,.5)",
+              padding:"2px 8px", borderRadius:20, fontSize:11, color:"#4ade80" }}>
+              {novel.statusID}
+            </span>
+          </div>
+          <h2 style={{ fontWeight:700, fontSize:"clamp(16px,4vw,22px)", color:"#fff",
+            lineHeight:1.3, marginBottom:8, textShadow:"0 2px 8px rgba(0,0,0,.8)" }}>
+            {novel.titleID}
+          </h2>
+          <p style={{ fontSize:12, color:"rgba(255,255,255,.7)", lineHeight:1.6,
+            display:"-webkit-box", WebkitLineClamp:2, WebkitBoxOrient:"vertical", overflow:"hidden",
+            marginBottom:12 }}>
+            {novel.desc}
+          </p>
+          <button onClick={()=>onNovel(novel)} style={{ width:"fit-content", background:"#e8a020",
+            border:"none", color:"#000", padding:"8px 20px", borderRadius:20, fontSize:13,
+            fontWeight:700, cursor:"pointer", fontFamily:"'Noto Sans JP',sans-serif" }}>
+            今すぐ読む
+          </button>
+        </div>
+      </div>
+
+      {/* Prev/Next */}
+      <button onClick={()=>{const p=(idx-1+BANNER_SLIDES.length)%BANNER_SLIDES.length;go(p,"right");setIdx(p);}}
+        style={{ position:"absolute", left:8, top:"50%", transform:"translateY(-50%)",
+          background:"rgba(0,0,0,.5)", border:"none", color:"#fff", width:28, height:28,
+          borderRadius:"50%", cursor:"pointer", fontSize:14, display:"flex", alignItems:"center", justifyContent:"center" }}>‹</button>
+      <button onClick={()=>{const n=(idx+1)%BANNER_SLIDES.length;go(n,"left");setIdx(n);}}
+        style={{ position:"absolute", right:8, top:"50%", transform:"translateY(-50%)",
+          background:"rgba(0,0,0,.5)", border:"none", color:"#fff", width:28, height:28,
+          borderRadius:"50%", cursor:"pointer", fontSize:14, display:"flex", alignItems:"center", justifyContent:"center" }}>›</button>
+
+      {/* Dots */}
+      <div style={{ position:"absolute", bottom:10, left:"50%", transform:"translateX(-50%)",
+        display:"flex", gap:6 }}>
+        {BANNER_SLIDES.map((_,i)=>(
+          <button key={i} onClick={()=>{go(i,i>idx?"left":"right");setIdx(i);}}
+            style={{ width:i===idx?20:6, height:6, borderRadius:3, border:"none", cursor:"pointer",
+              background:i===idx?"#e8a020":"rgba(255,255,255,.35)", transition:"all .3s", padding:0 }}/>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── NOVEL CARD ──
+function NovelCard({ novel, rank, onNovel, showRating=true }) {
+  return (
+    <div onClick={()=>onNovel(novel)} style={{ cursor:"pointer", flex:"0 0 auto",
+      width:140, animation:"fadeIn .3s ease" }}>
+      <div style={{ position:"relative", borderRadius:8, overflow:"hidden",
+        marginBottom:8, boxShadow:"0 4px 12px rgba(0,0,0,.6)" }}>
+        <CoverImg src={novel.cover} alt={novel.title}
+          style={{ width:140, height:190 }}
+          fallbackBg={novel.bannerBg} fallbackIcon="📖"
+        />
+        {/* Status badge */}
+        <div style={{ position:"absolute", top:0, left:0, right:0,
+          background:"rgba(0,0,0,.6)", padding:"3px 6px" }}>
+          <span style={{ fontSize:10, color:novel.status==="連載中"?"#4ade80":"#60a5fa",
+            fontWeight:500 }}>{novel.statusID}</span>
+        </div>
+        {/* Rank number */}
+        {rank && (
+          <div style={{ position:"absolute", bottom:8, left:8,
+            fontWeight:900, fontSize:28, color:"#fff",
+            textShadow:"0 0 8px rgba(0,0,0,.9), 1px 1px 0 #000",
+            lineHeight:1, fontFamily:"'Noto Sans JP',sans-serif" }}>
+            {rank}
+          </div>
+        )}
+        {/* Clock icon like wuxiaworld */}
+        <div style={{ position:"absolute", bottom:8, right:8,
+          background:"rgba(0,0,0,.7)", borderRadius:6, width:22, height:22,
+          display:"flex", alignItems:"center", justifyContent:"center", fontSize:12 }}>⏱</div>
+        {novel.badge && (
+          <div style={{ position:"absolute", top:24, left:0,
+            background:novel.badge==="NEW"?"#059669":novel.badge==="CLASSIC"?"#7c3aed":novel.badge==="TOP"?"#dc2626":"#d97706",
+            padding:"2px 6px", fontSize:9, fontWeight:700, color:"#fff",
+            borderRadius:"0 4px 4px 0" }}>{novel.badge}</div>
+        )}
+      </div>
+      {showRating && (
+        <div style={{ fontSize:11, color:"#aaa", marginBottom:3 }}>
+          👍 {novel.rating}%
+        </div>
+      )}
+      <div style={{ fontSize:12, fontWeight:600, color:"#f0f0f0", lineHeight:1.4,
+        display:"-webkit-box", WebkitLineClamp:2, WebkitBoxOrient:"vertical", overflow:"hidden" }}>
+        {novel.titleID}
+      </div>
+    </div>
+  );
+}
+
+// ── HORIZONTAL SCROLL SECTION ──
+function HScrollSection({ title, novels, onNovel, showRank=false }) {
+  const ref = useRef();
+  return (
+    <section style={{ marginBottom:28 }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center",
+        marginBottom:12, padding:"0 16px" }}>
+        <h2 style={{ fontSize:18, fontWeight:700, color:"#f0f0f0" }}>{title}</h2>
+        <button style={{ background:"none", border:"none", color:"#999", fontSize:13, cursor:"pointer" }}>
+          すべて見る ›
+        </button>
+      </div>
+      <div ref={ref} style={{ display:"flex", gap:12, overflowX:"auto", padding:"4px 16px 12px",
+        scrollbarWidth:"none", msOverflowStyle:"none" }}>
+        <style>{`.no-scroll::-webkit-scrollbar{display:none}`}</style>
+        {novels.map((n,i)=>(
+          <NovelCard key={n.id} novel={n} rank={showRank?i+1:null} onNovel={onNovel}/>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── ANNOUNCEMENT ──
+function Announcement() {
+  return (
+    <section style={{ marginBottom:24, padding:"0 16px" }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center",
+        marginBottom:10 }}>
+        <h2 style={{ fontSize:18, fontWeight:700, color:"#f0f0f0" }}>お知らせ</h2>
+        <button style={{ background:"none", border:"none", color:"#999", fontSize:13, cursor:"pointer" }}>
+          すべて見る ›
+        </button>
+      </div>
+      {[
+        { icon:NOVELS[3].cover, title:"リッチ・フォー・ハイヤー – 狡猾なリッチの権力への台頭！", time:"5日前" },
+        { icon:NOVELS[0].cover, title:"Nine Star Hegemon Body Art – チャプター4800 sudah tersedia!", time:"2日前" },
+      ].map((a,i)=>(
+        <div key={i} style={{ display:"flex", alignItems:"center", gap:12,
+          background:"#1a1a1a", borderRadius:10, padding:"12px 14px",
+          marginBottom:8, cursor:"pointer", transition:"background .15s" }}
+          onMouseEnter={e=>e.currentTarget.style.background="#222"}
+          onMouseLeave={e=>e.currentTarget.style.background="#1a1a1a"}>
+          <div style={{ width:44, height:44, borderRadius:8, overflow:"hidden", flexShrink:0 }}>
+            <CoverImg src={a.icon} alt="" style={{ width:44, height:44 }} fallbackBg="#333" fallbackIcon="📢"/>
+          </div>
+          <div style={{ flex:1, minWidth:0 }}>
+            <div style={{ fontSize:13, fontWeight:500, color:"#e0e0e0", lineHeight:1.4,
+              display:"-webkit-box", WebkitLineClamp:2, WebkitBoxOrient:"vertical", overflow:"hidden" }}>
+              {a.title}
+            </div>
+            <div style={{ fontSize:11, color:"#666", marginTop:4 }}>{a.time}</div>
+          </div>
+          <span style={{ color:"#555", fontSize:16 }}>›</span>
+        </div>
+      ))}
+    </section>
+  );
+}
+
+// ── NOVEL DETAIL PAGE ──
+function NovelDetail({ novel, library, setLibrary, onRead, onBack }) {
+  const [tab, setTab] = useState("about");
+  const inLib = library.includes(novel.id);
+
+  return (
+    <div style={{ minHeight:"100vh", background:"#111", animation:"fadeIn .25s ease" }}>
+      {/* Cover Banner */}
+      <div style={{ position:"relative", width:"100%", height:260, overflow:"hidden" }}>
+        <CoverImg src={novel.cover} alt={novel.title}
+          style={{ position:"absolute", inset:0, width:"100%", height:"100%" }}
+          fallbackBg={novel.bannerBg} fallbackIcon="📖"
+        />
+        <div style={{ position:"absolute", inset:0,
+          background:"linear-gradient(to bottom, rgba(0,0,0,.3) 0%, rgba(17,17,17,1) 100%)" }}/>
+        <button onClick={onBack} style={{ position:"absolute", top:16, left:16,
+          background:"rgba(0,0,0,.6)", border:"none", color:"#fff", width:36, height:36,
+          borderRadius:"50%", cursor:"pointer", fontSize:18, display:"flex", alignItems:"center", justifyContent:"center" }}>‹</button>
+      </div>
+
+      {/* Info */}
+      <div style={{ padding:"0 16px", marginTop:-60, position:"relative", zIndex:1 }}>
+        <div style={{ display:"flex", gap:14, marginBottom:16 }}>
+          <div style={{ width:100, height:140, borderRadius:8, overflow:"hidden",
+            boxShadow:"0 4px 20px rgba(0,0,0,.8)", flexShrink:0 }}>
+            <CoverImg src={novel.cover} alt={novel.title}
+              style={{ width:100, height:140 }}
+              fallbackBg={novel.bannerBg} fallbackIcon="📖"
+            />
+          </div>
+          <div style={{ flex:1, paddingTop:60 }}>
+            <h1 style={{ fontSize:18, fontWeight:700, color:"#fff", lineHeight:1.3,
+              marginBottom:4, textShadow:"0 1px 4px rgba(0,0,0,.8)" }}>
+              {novel.titleID}
+            </h1>
+            <div style={{ fontSize:13, color:"#aaa", marginBottom:8 }}>{novel.title}</div>
+            <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
+              <span style={{ background:"rgba(78,205,90,.15)", border:"1px solid rgba(78,205,90,.3)",
+                color:"#4ade80", padding:"3px 10px", borderRadius:20, fontSize:11 }}>
+                👍 {novel.rating}%
+              </span>
+              <span style={{ background:novel.status==="完結"?"rgba(96,165,250,.15)":"rgba(74,222,128,.15)",
+                border:`1px solid ${novel.status==="完結"?"rgba(96,165,250,.3)":"rgba(74,222,128,.3)"}`,
+                color:novel.status==="完結"?"#60a5fa":"#4ade80",
+                padding:"3px 10px", borderRadius:20, fontSize:11 }}>
+                {novel.statusID}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:1,
+          background:"#2a2a2a", borderRadius:10, overflow:"hidden", marginBottom:16 }}>
+          {[["📖",novel.chapters.toLocaleString(),"チャプター"],["👁️",novel.views,"閲覧数"],["⭐","4."+Math.floor(novel.rating/10),"評価"]].map(([ic,val,lbl])=>(
+            <div key={lbl} style={{ background:"#1a1a1a", padding:"12px 8px", textAlign:"center" }}>
+              <div style={{ fontSize:15, fontWeight:700, color:"#f0f0f0" }}>{ic} {val}</div>
+              <div style={{ fontSize:10, color:"#666", marginTop:2 }}>{lbl}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div style={{ display:"flex", gap:10, marginBottom:20 }}>
+          <button onClick={()=>onRead(1)} style={{ flex:1, background:"#e8a020", border:"none",
+            color:"#000", padding:"13px", borderRadius:25, fontSize:14, fontWeight:700,
+            cursor:"pointer", fontFamily:"'Noto Sans JP',sans-serif" }}>
+            ▶ 今すぐ読む
+          </button>
+          <button onClick={()=>setLibrary(p=>inLib?p.filter(x=>x!==novel.id):[...p,novel.id])}
+            style={{ width:50, background:inLib?"rgba(232,160,32,.15)":"#222",
+              border:`1px solid ${inLib?"#e8a020":"#333"}`,
+              color:inLib?"#e8a020":"#aaa", borderRadius:25, fontSize:18, cursor:"pointer" }}>
+            {inLib?"❤️":"🤍"}
+          </button>
+        </div>
+
+        {/* Tabs */}
+        <div style={{ display:"flex", borderBottom:"1px solid #2a2a2a", marginBottom:16 }}>
+          {["about","chapters"].map(t=>(
+            <button key={t} onClick={()=>setTab(t)} style={{ flex:1, background:"none", border:"none",
+              borderBottom:`2px solid ${tab===t?"#e8a020":"transparent"}`,
+              color:tab===t?"#e8a020":"#666", padding:"10px", fontSize:13, fontWeight:600,
+              cursor:"pointer", textTransform:"capitalize", fontFamily:"'Noto Sans JP',sans-serif" }}>
+              {t==="about"?"あらすじ":"チャプター一覧"}
+            </button>
+          ))}
+        </div>
+
+        {tab==="about" && (
+          <div style={{ animation:"fadeIn .2s ease" }}>
+            <p style={{ fontSize:14, color:"#ccc", lineHeight:1.8, marginBottom:16 }}>{novel.desc}</p>
+            <div style={{ display:"flex", gap:8, flexWrap:"wrap" }}>
+              {novel.tags.map(t=>(
+                <span key={t} style={{ background:"#222", border:"1px solid #333",
+                  color:"#aaa", padding:"4px 12px", borderRadius:20, fontSize:12 }}>{t}</span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {tab==="chapters" && (
+          <div style={{ animation:"fadeIn .2s ease" }}>
+            {Array.from({length:Math.min(20,novel.chapters)},(_,i)=>i+1).map(n=>(
+              <div key={n} onClick={()=>onRead(n)}
+                style={{ display:"flex", alignItems:"center", justifyContent:"space-between",
+                  padding:"13px 14px", background:"#1a1a1a", borderRadius:8,
+                  marginBottom:6, cursor:"pointer", transition:"background .15s" }}
+                onMouseEnter={e=>e.currentTarget.style.background="#222"}
+                onMouseLeave={e=>e.currentTarget.style.background="#1a1a1a"}>
+                <div>
+                  <span style={{ fontSize:12, color:"#888", marginRight:8 }}>Ch.{n}</span>
+                  <span style={{ fontSize:14, color:"#e0e0e0" }}>チャプター {n}</span>
+                </div>
+                <span style={{ color:"#555" }}>›</span>
+              </div>
+            ))}
+            {novel.chapters > 20 && (
+              <div style={{ textAlign:"center", padding:"14px", color:"#666", fontSize:13 }}>
+                + {(novel.chapters-20).toLocaleString()} チャプターがあります
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── CHAPTER READER ──
+function チャプターReader({ novel, chapterNum, onBack, onPrev, onNext, total }) {
+  const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [fontSize, setFontSize] = useState(16);
+  const topRef = useRef();
+
+  useEffect(()=>{
+    topRef.current?.scrollIntoView({behavior:"smooth"});
+    setLoading(true); setContent("");
+    (async()=>{
+      try {
+        const res = await fetch("https://api.anthropic.com/v1/messages",{
+          method:"POST", headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({
+            model:"claude-sonnet-4-20250514", max_tokens:900,
+            system:"You are a skilled xianxia/wuxia novel author. Write one chapter in English with flowing, dramatic, and immersive prose. Write 4-5 substantial paragraphs. Do not include a chapter number or title heading — just write the story content directly. Use vivid cultivation terminology, dramatic tension, and compelling character voice.",
+            messages:[{role:"user",content:`Write Chapter ${chapterNum} of "${novel.title}" by ${novel.author}. Genre: ${novel.genre}. Synopsis: ${novel.desc}. Write in vivid English prose with 4-5 paragraphs using rich xianxia/wuxia cultivation terminology, dramatic tension, and immersive world-building.`}]
+          })
+        });
+        const d = await res.json();
+        setContent(d.content?.map(b=>b.text||"").join("\n\n")||"チャプターのコンテンツは現在利用できません。");
+      } catch {
+        setContent("This scroll has yet to be translated. Please return later.");
+      }
+      setLoading(false);
+    })();
+  },[chapterNum, novel.id]);
+
+  return (
+    <div ref={topRef} style={{ minHeight:"100vh", background:"#0d0d0d" }}>
+      {/* Header */}
+      <div style={{ position:"sticky", top:0, zIndex:50, background:"rgba(13,13,13,.97)",
+        borderBottom:"1px solid #2a2a2a", padding:"12px 16px",
+        display:"flex", alignItems:"center", justifyContent:"space-between", backdropFilter:"blur(8px)" }}>
+        <button onClick={onBack} style={{ background:"none", border:"none", color:"#fff",
+          cursor:"pointer", fontSize:22, display:"flex", alignItems:"center", gap:4, padding:0 }}>‹</button>
+        <div style={{ textAlign:"center" }}>
+          <div style={{ fontSize:13, fontWeight:600, color:"#e0e0e0" }}>{novel.titleID}</div>
+          <div style={{ fontSize:11, color:"#666" }}>チャプター {chapterNum}</div>
+        </div>
+        <div style={{ display:"flex", gap:6 }}>
+          <button onClick={()=>setFontSize(f=>Math.max(13,f-1))}
+            style={{ background:"#222", border:"none", color:"#aaa", width:30, height:30,
+              borderRadius:6, cursor:"pointer", fontSize:14 }}>A-</button>
+          <button onClick={()=>setFontSize(f=>Math.min(22,f+1))}
+            style={{ background:"#222", border:"none", color:"#aaa", width:30, height:30,
+              borderRadius:6, cursor:"pointer", fontSize:16 }}>A+</button>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div style={{ maxWidth:680, margin:"0 auto", padding:"32px 20px 60px" }}>
+        <h2 style={{ fontSize:18, fontWeight:700, color:"#e8a020", textAlign:"center",
+          marginBottom:32 }}>チャプター {chapterNum}</h2>
+        {loading ? (
+          <div style={{ textAlign:"center", padding:"60px 0", color:"#666" }}>
+            <div style={{ fontSize:28, animation:"spin 1s linear infinite", display:"inline-block", marginBottom:12 }}>⟳</div>
+            <div style={{ fontSize:13, animation:"pulse 1.5s ease-in-out infinite" }}>チャプターを読み込み中...</div>
+          </div>
+        ) : (
+          <div style={{ animation:"fadeIn .4s ease" }}>
+            {content.split("\n\n").filter(p=>p.trim()).map((p,i)=>(
+              <p key={i} style={{ fontSize:fontSize, lineHeight:1.95, color:"#ccc",
+                marginBottom:"1.6em", fontFamily:"'Noto Serif JP',serif", textIndent:"2em" }}>
+                {p.trim()}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {/* Nav */}
+        <div style={{ display:"flex", gap:12, marginTop:40 }}>
+          <button onClick={onPrev} disabled={chapterNum<=1}
+            style={{ flex:1, background:chapterNum<=1?"#1a1a1a":"#222", border:"1px solid #333",
+              color:chapterNum<=1?"#444":"#aaa", padding:"12px", borderRadius:10,
+              cursor:chapterNum<=1?"default":"pointer", fontSize:13, fontFamily:"'Noto Sans JP',sans-serif" }}>
+            ‹ 前へ
+          </button>
+          <button onClick={onNext} disabled={chapterNum>=total}
+            style={{ flex:1, background:chapterNum>=total?"#1a1a1a":"#e8a020",
+              border:"none", color:chapterNum>=total?"#444":"#000",
+              padding:"12px", borderRadius:10,
+              cursor:chapterNum>=total?"default":"pointer", fontSize:13,
+              fontWeight:600, fontFamily:"'Noto Sans JP',sans-serif" }}>
+            次へ ›
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── SEARCH ──
+function SearchPage({ onNovel, onBack }) {
+  const [q, setQ] = useState("");
+  const [results, setResults] = useState([]);
+  const [ai, setAi] = useState("");
+  const [loading, setLoading] = useState(false);
+  const ref = useRef();
+  useEffect(()=>ref.current?.focus(),[]);
+
+  const doSearch = async(query) => {
+    if(!query.trim()) { setResults([]); setAi(""); return; }
+    setLoading(true); setAi("");
+    const local = NOVELS.filter(n=>
+      n.titleID.toLowerCase().includes(query.toLowerCase())||
+      n.title.toLowerCase().includes(query.toLowerCase())||
+      n.genre.toLowerCase().includes(query.toLowerCase())||
+      n.tags.some(t=>t.toLowerCase().includes(query.toLowerCase()))
+    );
+    setResults(local);
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:150,system:"You are an assistant for a xianxia novel reading platform. Give a short 1-2 sentence recommendation based on the user's search query. Reply in Japanese.",messages:[{role:"user",content:`Search query: "${query}"`}]})});
+      const d = await res.json();
+      setAi(d.content?.[0]?.text||"");
+    } catch{}
+    setLoading(false);
+  };
+
+  return (
+    <div style={{ minHeight:"100vh", background:"#111" }}>
+      <div style={{ padding:"12px 16px", display:"flex", gap:10, alignItems:"center",
+        background:"#1a1a1a", borderBottom:"1px solid #2a2a2a", position:"sticky", top:0, zIndex:50 }}>
+        <button onClick={onBack} style={{ background:"none", border:"none", color:"#fff",
+          cursor:"pointer", fontSize:22, padding:0 }}>‹</button>
+        <div style={{ flex:1, display:"flex", alignItems:"center", background:"#222",
+          borderRadius:20, padding:"8px 14px", gap:8 }}>
+          <span style={{ color:"#666" }}>🔍</span>
+          <input ref={ref} value={q} onChange={e=>{setQ(e.target.value);doSearch(e.target.value);}}
+            placeholder="小説、著者、ジャンルを検索..." autoFocus
+            style={{ flex:1, background:"none", border:"none", color:"#e0e0e0", fontSize:14,
+              outline:"none", fontFamily:"'Noto Sans JP',sans-serif" }}/>
+          {loading && <span style={{ animation:"spin .8s linear infinite", display:"inline-block", color:"#e8a020" }}>⟳</span>}
+        </div>
+      </div>
+
+      {ai && (
+        <div style={{ margin:"12px 16px", padding:"12px 14px", background:"#1a1a1a",
+          borderRadius:10, display:"flex", gap:10, alignItems:"flex-start" }}>
+          <span style={{ fontSize:16 }}>✨</span>
+          <p style={{ fontSize:13, color:"#ccc", lineHeight:1.6 }}>{ai}</p>
+        </div>
+      )}
+
+      <div style={{ padding:"8px 16px" }}>
+        {results.length > 0 ? results.map(n=>(
+          <div key={n.id} onClick={()=>onNovel(n)}
+            style={{ display:"flex", gap:12, padding:"12px 0", borderBottom:"1px solid #1e1e1e",
+              cursor:"pointer" }}>
+            <div style={{ width:50, height:70, borderRadius:6, overflow:"hidden", flexShrink:0 }}>
+              <CoverImg src={n.cover} alt={n.title} style={{ width:50, height:70 }}
+                fallbackBg={n.bannerBg} fallbackIcon="📖"/>
+            </div>
+            <div style={{ flex:1 }}>
+              <div style={{ fontSize:14, fontWeight:600, color:"#e0e0e0", marginBottom:2 }}>{n.titleID}</div>
+              <div style={{ fontSize:12, color:"#777", marginBottom:4 }}>{n.title} · {n.genre}</div>
+              <div style={{ fontSize:12, color:"#555", lineHeight:1.5,
+                display:"-webkit-box", WebkitLineClamp:2, WebkitBoxOrient:"vertical", overflow:"hidden" }}>
+                {n.desc}
+              </div>
+            </div>
+          </div>
+        )) : !loading && q && (
+          <div style={{ textAlign:"center", padding:"40px 20px", color:"#555" }}>
+            検索結果なし： "{q}"
+          </div>
+        )}
+        {!q && (
+          <div>
+            <div style={{ fontSize:12, color:"#666", marginBottom:10, marginTop:8 }}>よく検索されるワード</div>
+            {["仙侠","武侠","転生","システム","完結","アクション"].map(t=>(
+              <button key={t} onClick={()=>{setQ(t);doSearch(t);}}
+                style={{ display:"inline-block", background:"#1a1a1a", border:"1px solid #2a2a2a",
+                  color:"#aaa", padding:"7px 14px", borderRadius:20, fontSize:13,
+                  margin:"0 8px 8px 0", cursor:"pointer", fontFamily:"'Noto Sans JP',sans-serif" }}>{t}</button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── LIBRARY ──
+function LibraryPage({ library, setLibrary, onNovel, onBack }) {
+  const novels = NOVELS.filter(n=>library.includes(n.id));
+  return (
+    <div style={{ minHeight:"100vh", background:"#111" }}>
+      <div style={{ padding:"14px 16px", display:"flex", alignItems:"center", gap:12,
+        background:"#1a1a1a", borderBottom:"1px solid #2a2a2a", position:"sticky", top:0, zIndex:50 }}>
+        <button onClick={onBack} style={{ background:"none", border:"none", color:"#fff",
+          cursor:"pointer", fontSize:22 }}>‹</button>
+        <h1 style={{ fontSize:17, fontWeight:700 }}>マイライブラリ ({library.length})</h1>
+      </div>
+      <div style={{ padding:"12px 16px" }}>
+        {novels.length===0 ? (
+          <div style={{ textAlign:"center", padding:"60px 20px", color:"#555" }}>
+            <div style={{ fontSize:40, marginBottom:12 }}>📚</div>
+            <div style={{ fontSize:14 }}>ライブラリ kosong</div>
+            <div style={{ fontSize:12, marginTop:6, color:"#444" }}>お気に入りの小説を追加しよう</div>
+          </div>
+        ) : novels.map(n=>(
+          <div key={n.id} style={{ display:"flex", gap:12, padding:"12px 0",
+            borderBottom:"1px solid #1e1e1e" }}>
+            <div onClick={()=>onNovel(n)} style={{ cursor:"pointer", flexShrink:0 }}>
+              <CoverImg src={n.cover} alt={n.title} style={{ width:60, height:84, borderRadius:6 }}
+                fallbackBg={n.bannerBg} fallbackIcon="📖"/>
+            </div>
+            <div style={{ flex:1 }} onClick={()=>onNovel(n)}>
+              <div style={{ fontSize:14, fontWeight:600, color:"#e0e0e0", marginBottom:2 }}>{n.titleID}</div>
+              <div style={{ fontSize:12, color:"#777", marginBottom:6 }}>{n.author}</div>
+              <span style={{ background:"rgba(74,222,128,.1)", border:"1px solid rgba(74,222,128,.2)",
+                color:"#4ade80", padding:"2px 8px", borderRadius:10, fontSize:11 }}>{n.statusID}</span>
+            </div>
+            <button onClick={()=>setLibrary(p=>p.filter(x=>x!==n.id))}
+              style={{ background:"none", border:"none", color:"#555", cursor:"pointer",
+                fontSize:18, alignSelf:"center" }}>✕</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── MAIN APP ──
+export default function App() {
+  const [page, setPage] = useState("home");
+  const [selectedNovel, setSelectedNovel] = useState(null);
+  const [chapter, setチャプター] = useState(1);
+  const [library, setLibrary] = useState([]);
+  const appRef = useRef();
+
+  const goNovel = (n) => { setSelectedNovel(n); setPage("作品"); appRef.current?.scrollTo(0,0); };
+  const goRead  = (c) => { setチャプター(c); setPage("chapter"); appRef.current?.scrollTo(0,0); };
+  const goHome  = () => { setPage("home"); appRef.current?.scrollTo(0,0); };
+
+  const popular = [...NOVELS].sort((a,b)=>b.views.localeCompare(a.views)).slice(0,8);
+  const newReleases = [...NOVELS].slice(3,11);
+  const completed = NOVELS.filter(n=>n.status==="完結");
+
+  if(page==="chapter" && selectedNovel) return (
+    <div ref={appRef} style={{minHeight:"100vh",background:"#0d0d0d",overflowY:"auto"}}>
+      <style>{CSS}</style>
+      <チャプターReader novel={selectedNovel} chapterNum={chapter}
+        onBack={()=>setPage("作品")}
+        onPrev={()=>{if(chapter>1){setチャプター(c=>c-1);appRef.current?.scrollTo(0,0);}}}
+        onNext={()=>{if(chapter<Math.min(20,selectedNovel.chapters)){setチャプター(c=>c+1);appRef.current?.scrollTo(0,0);}}}
+        total={Math.min(20,selectedNovel.chapters)}/>
+    </div>
+  );
+
+  if(page==="作品" && selectedNovel) return (
+    <div ref={appRef} style={{minHeight:"100vh",background:"#111",overflowY:"auto"}}>
+      <style>{CSS}</style>
+      <NovelDetail novel={selectedNovel} library={library} setLibrary={setLibrary}
+        onRead={goRead} onBack={goHome}/>
+    </div>
+  );
+
+  if(page==="search") return (
+    <div ref={appRef} style={{minHeight:"100vh",background:"#111",overflowY:"auto"}}>
+      <style>{CSS}</style>
+      <SearchPage onNovel={(n)=>{goNovel(n);}} onBack={goHome}/>
+    </div>
+  );
+
+  if(page==="library") return (
+    <div ref={appRef} style={{minHeight:"100vh",background:"#111",overflowY:"auto"}}>
+      <style>{CSS}</style>
+      <LibraryPage library={library} setLibrary={setLibrary}
+        onNovel={(n)=>{goNovel(n);}} onBack={goHome}/>
+    </div>
+  );
+
+  // HOME
+  return (
+    <div ref={appRef} style={{ minHeight:"100vh", background:"#111", overflowY:"auto" }}>
+      <style>{CSS}</style>
+
+      {/* TOP NAV */}
+      <header style={{ position:"sticky", top:0, zIndex:100, background:"rgba(17,17,17,.97)",
+        backdropFilter:"blur(12px)", borderBottom:"1px solid #1e1e1e" }}>
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between",
+          padding:"12px 16px" }}>
+          <div onClick={goHome} style={{ cursor:"pointer", display:"flex", alignItems:"center", gap:8 }}>
+            <span style={{ fontSize:28, lineHeight:1 }}>弌</span>
+            <span style={{ fontSize:11, color:"#666", fontFamily:"serif" }}>XIANXIA</span>
+          </div>
+          <div style={{ display:"flex", gap:14, alignItems:"center" }}>
+            <button onClick={()=>setPage("search")}
+              style={{ background:"none", border:"none", color:"#ccc", cursor:"pointer", fontSize:20 }}>🔍</button>
+            <button onClick={()=>setPage("library")}
+              style={{ background:"none", border:"none", color:"#ccc", cursor:"pointer", fontSize:20, position:"relative" }}>
+              📚
+              {library.length>0 && <span style={{ position:"absolute", top:-4, right:-4,
+                background:"#e8a020", color:"#000", borderRadius:"50%", width:16, height:16,
+                display:"flex", alignItems:"center", justifyContent:"center", fontSize:9, fontWeight:700 }}>
+                {library.length}
+              </span>}
+            </button>
+            <button style={{ background:"none", border:"none", color:"#ccc", cursor:"pointer", fontSize:22 }}>☰</button>
+          </div>
+        </div>
+      </header>
+
+      {/* MAIN CONTENT */}
+      <div style={{ padding:"16px 0", maxWidth:800, margin:"0 auto" }}>
+
+        {/* HERO SLIDER */}
+        <div style={{ padding:"0 16px" }}>
+          <HeroSlider onNovel={goNovel}/>
+        </div>
+
+        {/* ANNOUNCEMENT */}
+        <Announcement/>
+
+        {/* POPULAR THIS WEEK */}
+        <HScrollSection
+          title="今週の人気作"
+          novels={popular}
+          onNovel={goNovel}
+          showRank={true}
+        />
+
+        {/* NEW RELEASES */}
+        <HScrollSection
+          title="新着作品"
+          novels={newReleases}
+          onNovel={goNovel}
+        />
+
+        {/* COMPLETED */}
+        <HScrollSection
+          title="完結済み"
+          novels={completed}
+          onNovel={goNovel}
+        />
+
+        {/* GENRE GRID */}
+        <section style={{ padding:"0 16px", marginBottom:32 }}>
+          <h2 style={{ fontSize:18, fontWeight:700, marginBottom:12 }}>ジャンルを探す</h2>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8 }}>
+            {[["⚡","仙侠","3,241"],["🗡️","武侠","2,108"],["🔮","ファンタジー","4,620"],["🤖","システム","1,854"],["💕","ロマンス","2,990"],["✅","完結","5,102"]].map(([ic,name,cnt])=>(
+              <div key={name} style={{ background:"#1a1a1a", borderRadius:10, padding:"14px 10px",
+                cursor:"pointer", textAlign:"center", transition:"background .15s" }}
+                onMouseEnter={e=>e.currentTarget.style.background="#222"}
+                onMouseLeave={e=>e.currentTarget.style.background="#1a1a1a"}>
+                <div style={{ fontSize:24, marginBottom:6 }}>{ic}</div>
+                <div style={{ fontSize:13, fontWeight:600, color:"#e0e0e0", marginBottom:2 }}>{name}</div>
+                <div style={{ fontSize:11, color:"#666" }}>{cnt} novel</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      {/* BOTTOM NAV */}
+      <nav style={{ position:"fixed", bottom:0, left:0, right:0, zIndex:100,
+        background:"rgba(17,17,17,.97)", backdropFilter:"blur(12px)",
+        borderTop:"1px solid #1e1e1e", display:"flex", padding:"8px 0" }}>
+        {[["🏠","ホーム","home"],["🔍","検索","search"],["📚","ライブラリ","library"],["👤","プロフィール","profile"]].map(([ic,lbl,p])=>(
+          <button key={p} onClick={()=>p!=="profile"&&setPage(p)}
+            style={{ flex:1, background:"none", border:"none", cursor:"pointer", padding:"6px 0",
+              display:"flex", flexDirection:"column", alignItems:"center", gap:2 }}>
+            <span style={{ fontSize:20 }}>{ic}</span>
+            <span style={{ fontSize:10, color:page===p?"#e8a020":"#666",
+              fontFamily:"'Noto Sans JP',sans-serif", fontWeight:page===p?600:400 }}>{lbl}</span>
+          </button>
+        ))}
+      </nav>
+
+      {/* Space for bottom nav */}
+      <div style={{ height:65 }}/>
+    </div>
+  );
+}
